@@ -72,8 +72,13 @@ export class AppService {
           // q: "mimeType=\'image/jpeg\'",
           fields: 'files(id, name)',
         });
-
-      return res.data.files;
+      if(res.data.files.length === 0)
+      {
+        return 'This file doesn\'t exist';
+      }
+      else
+        return res.data.files;
+      
     }
     catch (err) {
       console.log(`file has an error : ${err}`);
